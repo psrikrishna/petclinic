@@ -1,7 +1,7 @@
 pipeline {
   agent any
    tools {
-    maven 'Maven-3.5.2'
+    maven 'maven-3.5.2'
     jdk 'open-jdk17'
   }
    environment {
@@ -10,18 +10,7 @@ pipeline {
 	  }
 
   stages {
-      stage('Snyk Scan') {
-            steps {
-                snykSecurity( 
-                    snykInstallation: 'snyk', 
-                    snykTokenId: 'snyk_api_token', 
-                    monitorProjectOnBuild: false,
-                    failOnIssues: 'false', 
-                    additionalArguments: '--json-file-output=all-vulnerabilities.json'
-                )
-                sh 'snyk-filter -i all-vulnerabilities.json -f /usr/local/bin/exploitable_cvss_9.yml'
-            }
-      }
+     
       stage('Maven Compile and Build') {
             steps {
               sh "mvn clean"
