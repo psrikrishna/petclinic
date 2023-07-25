@@ -33,9 +33,7 @@ pipeline {
         snykSecurity(
           snykInstallation: 'Snyk',
           snykTokenId: 'snyk-psrikrishna-api-token',
-           failOnIssues: 'false', 
-           additionalArguments: '--json-file-output=report.json'
-        )
+           failOnIssues: 'false'        )
       }
     }
 
