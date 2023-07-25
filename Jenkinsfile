@@ -4,7 +4,10 @@ pipeline {
     maven 'maven-3.9.3'
     jdk 'Java17'
   }
-  stage("aws jenkins") {
+
+  stages {
+
+      stage("aws jenkins") {
          steps {
                   withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
@@ -16,8 +19,6 @@ pipeline {
                 }
                }
        }
-
-  stages {
      
       stage('Maven Compile and Build') {
             steps {
