@@ -32,8 +32,8 @@ pipeline {
         echo 'Testing...'
         snykSecurity(
           snykInstallation: 'Snyk',
-          snykTokenId: 'snyk-psrikrishna-api-token',
-           failOnIssues: 'false'        )
+          snykTokenId: 'snyktoken'
+        )
       }
     }
 
