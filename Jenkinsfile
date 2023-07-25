@@ -1,5 +1,14 @@
 pipeline {
   agent any
+   tools {
+    maven 'Maven-3.9.1'
+    jdk 'open-jdk17'
+  }
+   environment {
+   	AWS_ACCESS = credentials('AWS_ACCESS_KEY_ID')
+    AWS_SECRET = credentials('AWS_SECRET_ACCESS_KEY')
+	  }
+
   stages {
       stage('Snyk Scan') {
             steps {
@@ -13,19 +22,16 @@ pipeline {
                 sh 'snyk-filter -i all-vulnerabilities.json -f /usr/local/bin/exploitable_cvss_9.yml'
             }
       }
-      stage('Build Artifact') {
+      stage('Maven Compile and Build') {
             steps {
-              withMaven(maven: 'maven') {
-              sh "mvn clean package -DskipTests=true -Dcheckstyle.skip" 
-              archive 'target/*.jar'
+              sh "mvn clean"
+              sh "mvn compile"
+              sh "mvn package -DskipTests=true -Dcheckstyle.skip" 
               }
             }  
-       }
-      stage('Test Maven - JUnit') {
+      stage('Maven Test') {
             steps {
-              withMaven(maven: 'maven') {
               sh "mvn test -Dcheckstyle.skip"
-              }
             }
             post{
               always{
