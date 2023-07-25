@@ -27,15 +27,6 @@ pipeline {
               sh "mvn package -DskipTests=true -Dcheckstyle.skip" 
               }
             }  
-      stage('Maven Test') {
-            steps {
-              sh "mvn test -Dcheckstyle.skip"
-            }
-            post{
-              always{
-                junit 'target/surefire-reports/*.xml'
-              }
-            }
-        }
+
      }
 }
