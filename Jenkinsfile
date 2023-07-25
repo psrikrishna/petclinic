@@ -1,8 +1,8 @@
 pipeline {
   agent any
    tools {
-    maven 'maven-3.5.2'
-    jdk 'open-jdk17'
+    maven 'maven-3.9.3'
+    jdk 'Java17'
   }
    environment {
    	AWS_ACCESS = credentials('AWS_ACCESS_KEY_ID')
