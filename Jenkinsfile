@@ -27,6 +27,17 @@ pipeline {
               sh "mvn package -DskipTests=true -Dcheckstyle.skip" 
               }
             }  
+     stage('Snyk Security Test') {
+      steps {
+        echo 'Testing...'
+        snykSecurity(
+          snykInstallation: 'Snyk',
+          snykTokenId: 'snyk-psrikrishna-api-token',
+           failOnIssues: 'false', 
+           additionalArguments: '--json-file-output=report.json'
+        )
+      }
+    }
 
      }
 }
