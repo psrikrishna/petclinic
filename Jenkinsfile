@@ -32,8 +32,7 @@ pipeline {
         echo 'Testing...'
         snykSecurity(
           snykInstallation: 'Snyk',
-          snykTokenId: 'snyktoken'
-          monitorProjectOnBuild: false,
+          snykTokenId: 'snyktoken',
           failOnIssues: 'false'
         )
       }
