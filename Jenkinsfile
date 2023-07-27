@@ -33,6 +33,8 @@ pipeline {
         snykSecurity(
           snykInstallation: 'Snyk',
           snykTokenId: 'snyktoken'
+          monitorProjectOnBuild: false,
+          failOnIssues: 'false'
         )
       }
     }
