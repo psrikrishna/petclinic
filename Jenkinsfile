@@ -42,9 +42,9 @@ pipeline {
             steps {
               withDockerRegistry(credentialsId: 'dockercred', url: '') {
               sh "docker build -t petclinic_img ."
-	      sh "sudo docker tag petclinic_img:latest srikp/images:petclinic_docker_image"
-              sh "sudo docker push srikp/images:petclinic_docker_image"
-              sh "sudo docker run -d -p 8080:8080 petclinic_docker_image"
+	      sh "docker tag petclinic_img:latest srikp/images:petclinic_docker_image"
+              sh "docker push srikp/images:petclinic_docker_image"
+              sh "docker run -d -p 8080:8080 petclinic_docker_image"
               }
             }  
        }
