@@ -39,13 +39,12 @@ pipeline {
     }
 
       stage('Docker Image creation') {
-            steps {
-              withDockerRegistry(credentialsId: 'dockercred', url: '') {
-              sh "docker build . -t srikp/petclinic_docker_image"
-              sh "docker push srikp/images:petclinic_docker_image"
-              sh "docker run -d -p 8081:8080 petclinic_docker_image"
-              }
-            }  
+           steps {
+      	withCredentials([usernamePassword(credentialsId: 'dpckercred', passwordVariable: 'dockercredPassword', usernameVariable: 'dockercredUser')]) {
+        	sh "docker login -u ${env.dockercredUser} -p ${env.dockercredPassword}"
+          sh 'docker push srikp/spring-petclinic:latest'
+        }
+      }
        }
 
      }
