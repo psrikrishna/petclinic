@@ -50,5 +50,11 @@ pipeline {
       }
        }
 
+     stage(‘Setup MySQL as DB’) {
+            steps {
+                sh 'docker-compose up'
+            }
+        }
+
      }
 }
