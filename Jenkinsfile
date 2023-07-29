@@ -43,7 +43,7 @@ pipeline {
       	withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'dockercredPassword', usernameVariable: 'dockercredUser')]) {
         	 sh "docker login -u ${env.dockercredUser} -p ${env.dockercredPassword}"
            sh "docker build -t petclinic_img ."
-           sh "docker run -d -p 8080:8080 petclinic_img"
+           sh "docker run -d -p 8081:8080 petclinic_img"
            sh 'docker push srikp/petclinic_img:latest'
         }
       }
