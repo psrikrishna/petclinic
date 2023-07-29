@@ -8,4 +8,6 @@ WORKDIR /home/petclinic/
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "spring-petclinic-3.1.0-SNAPSHOT.jar"]
+ENV MYSQL_URL jdbc:mysql://mysql:3306/petclinic
+
+CMD ["java", "-jar", "spring-petclinic-3.1.0-SNAPSHOT.jar", "--spring.profiles.active=mysql"]
