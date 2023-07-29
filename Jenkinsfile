@@ -24,7 +24,7 @@ pipeline {
             steps {
               sh "mvn clean"
               sh "mvn compile"
-              sh "mvn package -DskipTests -Dspring.profiles.active=mysql" 
+              sh "mvn package -DskipTests" 
               }
             }  
  /*    stage('Snyk Security Test') {
