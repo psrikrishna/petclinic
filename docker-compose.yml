@@ -2,10 +2,10 @@ version: "2.2"
 
 services:
   petclinic:
-    image: petclinic_img:latest
+    image: srikp/petclinic_img
     container_name: petclinic
     ports:
-      - 8080:9081
+      - 9080:8080
     depends_on:
       - mysql  
     restart: always
@@ -22,3 +22,4 @@ services:
       - MYSQL_DATABASE=petclinic
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
+
