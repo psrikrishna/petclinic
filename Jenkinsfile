@@ -44,7 +44,7 @@ pipeline {
         	 sh "docker login -u ${env.dockercredUser} -p ${env.dockercredPassword}"
            sh "docker build -t petclinic_img ."
            sh "docker run -d -p 8085:8080 petclinic_img"
-           sh 'docker push srikp/petclinic_img'
+           sh 'docker push petclinic_img'
         }
       }
        }
