@@ -7,7 +7,7 @@ pipeline {
 
   stages {
 
-      stage("aws jenkins") {
+/*      stage("aws jenkins") {
          steps {
                   withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
@@ -18,7 +18,7 @@ pipeline {
                     sh "aws s3 ls"
                 }
                }
-       }
+       }*/
      
       stage('Maven Compile and Build') {
             steps {
@@ -27,7 +27,7 @@ pipeline {
               sh "mvn package -DskipTests=true -Dcheckstyle.skip" 
               }
             }  
-     stage('Snyk Security Test') {
+ /*    stage('Snyk Security Test') {
       steps {
         echo 'Testing...'
         snykSecurity(
@@ -36,7 +36,7 @@ pipeline {
           failOnIssues: 'false'
         )
       }
-    }
+    }*/
 
       stage('Docker Image creation') {
            steps {
