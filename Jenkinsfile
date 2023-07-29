@@ -50,7 +50,7 @@ pipeline {
       }
        }
 
-     stage(‘Configure mysqlDB’) {
+     stage(‘Configure databas’) {
             steps {
                 sh 'docker-compose up'
             }
