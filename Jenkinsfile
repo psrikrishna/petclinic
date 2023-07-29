@@ -40,7 +40,7 @@ pipeline {
 
       stage('Docker Image creation') {
            steps {
-      	withCredentials([usernamePassword(credentialsId: 'dpckercred', passwordVariable: 'dockercredPassword', usernameVariable: 'dockercredUser')]) {
+      	withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'dockercredPassword', usernameVariable: 'dockercredUser')]) {
         	sh "docker login -u ${env.dockercredUser} -p ${env.dockercredPassword}"
           sh 'docker push srikp/spring-petclinic:latest'
         }
