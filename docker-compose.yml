@@ -2,7 +2,7 @@ version: "2.2"
 
 services:
   petclinic:
-    image: srikp/petclinic_img
+    image: srikp/images:petclinic_img
     container_name: petclinic
     ports:
       - 9080:8080
