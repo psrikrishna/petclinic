@@ -46,7 +46,7 @@ pipeline {
            sh "docker tag petclinic_img:latest srikp/images:petclinic_img"
            sh "docker push srikp/images:petclinic_img"
            sh "docker run -d -p 9081:8080 petclinic_img"
-           sh 'docker-compose up'
+           sh 'docker-compose up -d'
         }
       }
     }
