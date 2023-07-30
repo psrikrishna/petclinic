@@ -1,24 +1,13 @@
 version: "2.2"
 
 services:
-  petclinic:
-    image: srikp/images:petclinic_img
-    container_name: petclinic
+  postgres:
+    image: postgres:15.3
     ports:
-      - 9080:8080
-    depends_on:
-      - mysql  
-    restart: always
-  mysql:
-    image: mysql:8.0
-    container_name: mysql
-    ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_USER=petclinic
-      - MYSQL_PASSWORD=petclinic
-      - MYSQL_DATABASE=petclinic
-    volumes:
-      - "./conf.d:/etc/mysql/conf.d:ro"
+      - POSTGRES_PASSWORD=petclinic
+      - POSTGRES_USER=petclinic
+      - POSTGRES_DB=petclinic
+    profiles:
+    - postgres
