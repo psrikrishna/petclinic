@@ -2,12 +2,21 @@ version: "2.2"
 
 services:
   postgres:
-    image: postgres:15.3
+    image: srikp/images:petclinic_img
+    container_name: petclinic
     ports:
-      - "5432:5432"
+     - 9080:8080
+    depends_on:
+      - mysql  
+    restart: always
+  mysql:
+    image: postgres:15.3
+    container_name: mysql
     environment:
       - POSTGRES_PASSWORD=petclinic
       - POSTGRES_USER=petclinic
       - POSTGRES_DB=petclinic
+    volumes:
+      - "./conf.d:/etc/mysql/conf.d:ro"
     profiles:
     - postgres
