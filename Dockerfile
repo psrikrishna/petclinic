@@ -8,7 +8,7 @@ WORKDIR /home/petclinic/
 
 EXPOSE 8080
 
-ENV SPRING_DATASOURCE_URL=jdbc:postgresql://your_postgres_host:5432/petclinic
+ENV POSTGRES_URL=jdbc:postgresql://postgresql:5432/petclinic
 ENV SPRING_DATASOURCE_USERNAME=petclinic
 ENV SPRING_DATASOURCE_PASSWORD=petclinic
 
