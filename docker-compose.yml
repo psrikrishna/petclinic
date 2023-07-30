@@ -23,3 +23,14 @@ services:
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
 
+services:
+  nexus:
+    image: sonatype/nexus3
+    restart: always
+    volumes:
+      - "nexus-data:/sonatype-work"
+    ports:
+      - "8090:8081"
+volumes:
+  nexus-data: {}
+
