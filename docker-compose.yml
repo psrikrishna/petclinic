@@ -5,7 +5,7 @@ services:
     image: srikp/images:petclinic_img
     container_name: petclinic
     ports:
-      - 9072:8080
+      - 8088:8080
     depends_on:
       - postgres  
     restart: always
