@@ -24,7 +24,7 @@ pipeline {
             steps {
               sh "mvn clean"
               sh "mvn compile"
-              sh "mvn package -DskipTests -Dspring.profiles.active=mysql" 
+              sh "mvn package -DskipTests -Dspring.profiles.active=postgres" 
               }
             }  
  /*    stage('Snyk Security Test') {
@@ -45,8 +45,8 @@ pipeline {
            sh "docker build -t petclinic_img ."
            sh "docker tag petclinic_img:latest srikp/images:petclinic_img"
            sh "docker push srikp/images:petclinic_img"
-           sh "docker run -d -p 9080:8080 petclinic_img"
-           sh 'docker-compose --profile mysql up -d'
+           sh "docker run -d -p 9082:8080 petclinic_img"
+           sh 'docker-compose --profile postgres up -d'
         }
       }
     }
