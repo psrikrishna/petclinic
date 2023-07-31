@@ -7,8 +7,5 @@ COPY target/*.jar /home/petclinic/
 WORKDIR /home/petclinic/
 
 EXPOSE 8080
-ENV POSTGRES_URL jdbc:postgresql://host.docker.internal:5432/petclinic
-ENV SPRING_DATASOURCE_USERNAME=petclinic
-ENV SPRING_DATASOURCE_PASSWORD=petclinic
 
 CMD ["java", "-jar", "spring-petclinic-3.1.0-SNAPSHOT.jar", "--spring.profiles.active=postgres"]
