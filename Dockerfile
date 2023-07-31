@@ -7,7 +7,7 @@ COPY target/*.jar /home/petclinic/
 WORKDIR /home/petclinic/
 
 EXPOSE 8080
-ENV POSTGRES_URL jdbc:postgresql://35.178.141.40:5432/petclinic
+ENV POSTGRES_URL postgresql://13.41.195.138:5432/petclinic?user=petclinic&password=petclinic
 ENV SPRING_DATASOURCE_USERNAME=petclinic
 ENV SPRING_DATASOURCE_PASSWORD=petclinic
 
