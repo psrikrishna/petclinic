@@ -1,6 +1,15 @@
+
 version: "2.2"
 
 services:
+  petclinic:
+    image: srikp/images:petclinic_img
+    container_name: petclinic
+    ports:
+      - 8088:8080
+    depends_on:
+      - postgres  
+    restart: always
   postgres:
     image: postgres:15.3
     container_name: postgres
