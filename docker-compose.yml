@@ -15,7 +15,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_URL=jdbc:postgresql://13.41.195.138:5432/petclinic
       - POSTGRES_PASSWORD=petclinic
       - POSTGRES_USER=petclinic
       - POSTGRES_DB=petclinic
