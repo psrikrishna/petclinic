@@ -46,7 +46,7 @@ pipeline {
            sh "docker tag petclinic_img:latest srikp/images:petclinic_img"
            sh "docker push srikp/images:petclinic_img"
            //sh "docker run -d -p 8088:8080 petclinic_img"
-           //sh "docker run -d -e POSTGRES_USER=petclinic -e POSTGRES_PASSWORD=petclinic -e POSTGRES_DB=petclinic -p 5432:5432 postgres:15.2
+           //sh "docker run -d -p 5432:5432 postgres:15.2
            sh 'docker-compose --profile postgres up -d'
         }
       }
