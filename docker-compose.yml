@@ -1,22 +1,26 @@
-
-version: "2.2"
-
+version: '3'
 services:
-  petclinic:
-    image: srikp/images:petclinic_img
-    container_name: petclinic
-    ports:
-      - 8088:8080
-    depends_on:
-      - postgresql  
-    restart: always
-  postgresql:
-    image: postgres:15.3
-    container_name: postgres
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: petclinic
     ports:
       - "5432:5432"
-    environment:
-      - POSTGRES_USER=petclinic
-      - POSTGRES_DB=petclinic
-    profiles:
-    - postgres
+    networks:
+      - app-network
+
+  petclinic:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
