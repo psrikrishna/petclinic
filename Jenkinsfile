@@ -38,16 +38,15 @@ pipeline {
       }
     }*/
 
-      stage('Docker Image creation') {
+      stage('Containers') {
            steps {
       	withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'dockercredPassword', usernameVariable: 'dockercredUser')]) {
         	 sh "docker login -u ${env.dockercredUser} -p ${env.dockercredPassword}"
            sh "docker build -t petclinic_img ."
            sh "docker tag petclinic_img:latest srikp/images:petclinic_img"
            sh "docker push srikp/images:petclinic_img"
-           //sh "docker run -d -p 8088:8080 petclinic_img"
-           //sh "docker run -d -p 5432:5432 postgres:15.2
-           sh 'docker-compose --profile postgres up -d'
+           sh 'DB_PASSWORD=$POSTGRES_PASSWORD docker-compose up -d'
+
         }
       }
     }
