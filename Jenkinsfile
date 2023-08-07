@@ -38,18 +38,17 @@ pipeline {
       }
     }*/
 
-      stage('Containers') {
-           steps {
-      	withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'dockercredPassword', usernameVariable: 'dockercredUser')]) {
-        	 sh "docker login -u ${env.dockercredUser} -p ${env.dockercredPassword}"
-           sh "docker build -t petclinic_img ."
-           sh "docker tag petclinic_img:latest srikp/images:petclinic_img"
-           sh "docker push srikp/images:petclinic_img"
-           sh 'POSTGRES_PASSWORD=$POSTGRES_PASSWORD docker-compose up -d'
-
+stage('Containers') {
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'dockercredPassword', usernameVariable: 'dockercredUser')]) {
+            sh "docker login -u ${env.dockercredUser} -p ${env.dockercredPassword}"
+            sh "docker build -t petclinic_img ."
+            sh "docker tag petclinic_img:latest srikp/images:petclinic_img"
+            sh "docker push srikp/images:petclinic_img"
+            sh "export POSTGRES_PASSWORD=${POSTGRES_PASSWORD} && docker-compose up -d"
         }
-      }
     }
+}
 
   }
 }
