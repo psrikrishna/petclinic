@@ -45,7 +45,7 @@ stage('Containers') {
             sh "docker build -t petclinic_img ."
             sh "docker tag petclinic_img:latest srikp/images:petclinic_img"
             sh "docker push srikp/images:petclinic_img"
-            sh "export POSTGRES_PASSWORD=${POSTGRES_PASSWORD} && docker-compose up -d"
+            sh "export POSTGRES_PASSWORD=${env.POSTGRES_PASSWORD} && docker-compose up -d"
         }
     }
 }
