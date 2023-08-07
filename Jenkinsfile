@@ -45,7 +45,7 @@ pipeline {
            sh "docker build -t petclinic_img ."
            sh "docker tag petclinic_img:latest srikp/images:petclinic_img"
            sh "docker push srikp/images:petclinic_img"
-           sh 'DB_PASSWORD=$POSTGRES_PASSWORD docker-compose up -d'
+           sh 'POSTGRES_PASSWORD=$POSTGRES_PASSWORD docker-compose up -d'
 
         }
       }
