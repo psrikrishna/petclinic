@@ -38,12 +38,14 @@ pipeline {
       }
     }*/
 
-stage('Containers') {
+stage('Docker login') {
     steps {
-        withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'dockercredPassword', usernameVariable: 'dockercredUser')]) {
-          sh 'echo $dockercred | docker login --username ${env.dockercredUser} --password-stdin'
-  
-          sh "docker login -u ${env.dockercredUser} -p ${env.dockercredPassword}"
+        withCredentials([string(credentialsId: 'dockercred', variable: 'DOCKER_CREDENTIALS')]) {
+                    def creds = DOCKER_CREDENTIALS.split(':')
+                    def username = creds[0]
+                    def password = creds[1]
+                    
+                    sh("echo '${password}' | docker login --username '${username}' --password-stdin")
             sh "docker build -t petclinic-app ."
             sh "docker tag petclinic-app:latest srikp/images:petclinic-app"
             sh "docker push srikp/images:petclinic-app"
