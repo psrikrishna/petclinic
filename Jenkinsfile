@@ -40,6 +40,7 @@ pipeline {
 
 stage('Docker login') {
     steps {
+      script {
         withCredentials([string(credentialsId: 'dockercred', variable: 'DOCKER_CREDENTIALS')]) {
                     def creds = DOCKER_CREDENTIALS.split(':')
                     def username = creds[0]
@@ -51,6 +52,7 @@ stage('Docker login') {
             sh "docker push srikp/images:petclinic-app"
             sh "docker-compose up -d"
         }
+      }
     }
 }
 
