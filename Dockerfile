@@ -6,7 +6,7 @@ COPY target/*.jar /home/petclinic/
 
 WORKDIR /home/petclinic/
 
-RUN yum install -y postgresql-client
+RUN sudo yum install -y postgresql
 
 ENV POSTGRES_URL jdbc:postgresql://postgres:5432/petclinic
 
