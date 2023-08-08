@@ -41,12 +41,9 @@ pipeline {
 stage('Docker login') {
     steps {
       script {
-        withCredentials([string(credentialsId: 'dockercred', variable: 'DOCKER_CREDENTIALS', masking: true)]) {
-                    def creds = DOCKER_CREDENTIALS.split(':')
-                    def username = creds[0]
-                    def password = creds[1]
-                    
-                    sh "echo '${password}' | docker login --username '${username}' --password-stdin"
+        withCredentials([string(credentialsId: 'dockercred', variable: 'PASSWORD', masking: true)]) {
+                            sh "echo '${PASSWORD}' | docker login --username '${username}' --password-stdin"
+                        }
             sh "docker build -t petclinic-app ."
             sh "docker tag petclinic-app:latest srikp/images:petclinic-app"
             sh "docker push srikp/images:petclinic-app"
