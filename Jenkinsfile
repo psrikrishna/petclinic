@@ -4,6 +4,10 @@ pipeline {
     maven 'maven-3.9.3'
     jdk 'Java17'
   }
+  environment{
+    DB_USER = credentials('dbcreds').username
+    DB_PASSWORD = credentials('dbcreds').password
+  }
 
   stages {
 
