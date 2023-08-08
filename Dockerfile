@@ -12,4 +12,4 @@ ENV POSTGRES_URL jdbc:postgresql://postgres:5432/petclinic
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "spring-petclinic-3.1.0-SNAPSHOT.jar", "--spring.profiles.active=postgres"]
+CMD ["java", "-jar", "spring-petclinic-3.1.0-SNAPSHOT.jar"]
