@@ -41,7 +41,7 @@ pipeline {
 stage('Docker login') {
     steps {
       script {
-        withCredentials([string(credentialsId: 'dockercred', variable: 'DOCKER_CREDENTIALS')]) {
+        withCredentials([string(credentialsId: 'dockercred', variable: 'DOCKER_CREDENTIALS', masking: true)]) {
                     def creds = DOCKER_CREDENTIALS.split(':')
                     def username = creds[0]
                     def password = creds[1]
