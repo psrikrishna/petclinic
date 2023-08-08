@@ -5,8 +5,8 @@ pipeline {
     jdk 'Java17'
   }
   environment{
-    DB_USER = credentials('dbcreds').username
-    DB_PASSWORD = credentials('dbcreds').password
+    DB_USER = "${credentials('dbcreds').username}"
+    DB_PASSWORD = "${credentials('dbcreds').password}"
   }
 
   stages {
