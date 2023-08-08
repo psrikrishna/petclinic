@@ -12,9 +12,7 @@ services:
       - app-network
 
   petclinic:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: srikp/images:petclinic_img
     ports:
       - "8081:8080"
     depends_on:
