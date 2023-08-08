@@ -6,7 +6,7 @@ COPY target/*.jar /home/petclinic/
 
 WORKDIR /home/petclinic/
 
-RUN yum install -y iputils-ping dnsutils
+RUN apt-get update && apt-get install -y iputils-ping dnsutils postgresql-client
 
 ENV POSTGRES_URL jdbc:postgresql://postgres:5432/petclinic
 
