@@ -6,7 +6,7 @@ COPY target/*.jar /home/petclinic/
 
 WORKDIR /home/petclinic/
 
-ENV POSTGRES_URL:jdbc:postgresql://postgres:5432/petclinic
+ENV POSTGRES_URL jdbc:postgresql://postgres:5432/petclinic
 
 EXPOSE 8080
 
