@@ -43,8 +43,8 @@ stage('Containers') {
         withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'dockercredPassword', usernameVariable: 'dockercredUser')]) {
             sh "docker login -u ${env.dockercredUser} -p ${env.dockercredPassword}"
             sh "docker build -t petclinic-app ."
-            // sh "docker tag petclinic_img:latest srikp/images:petclinic_img"
-            // sh "docker push srikp/images:petclinic_img"
+            sh "docker tag petclinic-app:latest srikp/images:petclinic-app"
+            sh "docker push srikp/images:petclinic-app"
             sh "docker-compose up -d"
         }
     }
