@@ -4,7 +4,7 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: petclinic
-      POSTGRES_PASSWORD: yourpassword
+      POSTGRES_PASSWORD: petclinic
       POSTGRES_DB: petclinic
 
   petclinic:
@@ -16,4 +16,4 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/petclinic
       SPRING_DATASOURCE_USERNAME: petclinic
-      SPRING_DATASOURCE_PASSWORD: yourpassword
+      SPRING_DATASOURCE_PASSWORD: petclinic
