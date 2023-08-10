@@ -3,8 +3,8 @@ services:
   postgres:
     image: postgres
     environment:
-      POSTGRES_USER: petclinic
-      POSTGRES_PASSWORD: petclinic
+      POSTGRES_USER: ${PETCLINIC_DB_USERNAME}
+      POSTGRES_PASSWORD: ${PETCLINIC_DB_PASSWORD}
       POSTGRES_DB: petclinic
 
   petclinic:
