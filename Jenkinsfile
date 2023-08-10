@@ -61,8 +61,6 @@ stage('Docker login') {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'postgrescred', passwordVariable: 'PETCLINIC_DB_PASSWORD', usernameVariable: 'PETCLINIC_DB_USERNAME')]) {
-                        echo "Username: $PETCLINIC_DB_USERNAME"
-                        echo "Password: $PETCLINIC_DB_PASSWORD"
                       sh "docker-compose up -d"
                     }
                 }
