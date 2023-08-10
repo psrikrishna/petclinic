@@ -5,7 +5,6 @@ pipeline {
     jdk 'Java17'
   }
   environment{
-    DB = credentials('dbcreds')
     PETCLINIC_CREDS = credentials('postgrescred')
 
   }
