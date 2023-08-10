@@ -50,11 +50,22 @@ stage('Docker login') {
             sh "docker build -t petclinic-app ."
             sh "docker tag petclinic-app:latest srikp/images:petclinic-app"
             sh "docker push srikp/images:petclinic-app"
-            sh "docker-compose up -d"
         }
       }
     }
 }
+
+    stage('Build and Deploy') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'postgrescred', passwordVariable: 'PETCLINIC_DB_PASSWORD', usernameVariable: 'PETCLINIC_DB_USERNAME')]) {
+                      sh "docker-compose up -d"
+                    }
+                }
+            }
+        }
+
+    
 
   }
 }
