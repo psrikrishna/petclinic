@@ -25,14 +25,13 @@ jobs:
 
     - name: Build Spring PetClinic
       run: |
-        mkdir -p /home/petclinic
-        cp target/*.jar /home/petclinic/
+        cp target/*.jar $GITHUB_WORKSPACE
       working-directory: ${{ github.workspace }}
 
     - name: Run Spring PetClinic
       run: |
-        cd /home/petclinic/
+        cd $GITHUB_WORKSPACE
         java -jar spring-petclinic-3.1.0-SNAPSHOT.jar --spring.profiles.active=postgres
-    
+
     - name: Build docker file   
       run: docker build . --file Dockerfile --tag petclinic_postgres:$(date +%s)
