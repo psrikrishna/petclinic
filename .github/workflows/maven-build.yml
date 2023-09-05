@@ -28,5 +28,5 @@ jobs:
           cache: maven
 
       - name: Build with Maven Wrapper
-        working-directory: ./petclinic 
+        working-directory: ${{ github.workspace }}/petclinic
         run: mvn clean package -DskipTests -Dspring.profiles.active=postgres
