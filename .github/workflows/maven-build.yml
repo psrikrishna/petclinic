@@ -26,4 +26,4 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Build with Maven Wrapper
-        run: mvn package -DskipTests -Dspring.profiles.active=postgres
+        run: mvn -B package --file pom.xml -DskipTests -Dspring.profiles.active=postgres
