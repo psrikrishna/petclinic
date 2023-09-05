@@ -23,12 +23,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
 
-    - name: Build Spring PetClinic
-      run: |
-        working-directory: ${{ github.workspace }}
-        cp /home/runner/work/petclinic/petclinic/target/spring-petclinic-3.1.0-SNAPSHOT.jar $GITHUB_WORKSPACE
-
-
+  
     - name: Run Spring PetClinic
       run: |
         cd $GITHUB_WORKSPACE
