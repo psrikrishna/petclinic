@@ -27,6 +27,9 @@ jobs:
     - name: Run Spring PetClinic
       run: |
         cd $GITHUB_WORKSPACE
+        pwd
+        cd target
+        ls
         java -jar spring-petclinic-3.1.0-SNAPSHOT.jar --spring.profiles.active=postgres
 
     - name: Build docker file   
