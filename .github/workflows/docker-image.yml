@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Petclinic Docker Image CI With Postgres
 
 on:
   push:
@@ -7,12 +7,28 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: 17
+
+    - name: Build Spring PetClinic
+      run: |
+        mkdir -p /home/petclinic
+        cp target/*.jar /home/petclinic/
+      working-directory: ${{ github.workspace }}
+
+    - name: Run Spring PetClinic
+      run: |
+        cd /home/petclinic/
+        java -jar spring-petclinic-3.1.0-SNAPSHOT.jar --spring.profiles.active=postgres
+    
+    - name: Build docker file   
       run: docker build . --file Dockerfile --tag petclinic_postgres:$(date +%s)
