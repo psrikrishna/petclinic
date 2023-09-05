@@ -28,5 +28,4 @@ jobs:
           cache: maven
 
       - name: Build with Maven Wrapper
-        working-directory:  ${{ github.workspace }}
         run: mvn clean package -DskipTests -Dspring.profiles.active=postgres
