@@ -1,7 +1,9 @@
 
 FROM openjdk:17-oracle
 
-WORKDIR /home/runner/work/petclinic/petclinic/target/
+COPY target/*.jar /home/petclinic/
+
+WORKDIR /home/petclinic/
 
 EXPOSE 8080
 
