@@ -17,7 +17,7 @@ jobs:
   BuildDockerImage:
     runs-on: ubuntu-latest
 
-     env:
+    env:
       ECR_REPOSITORY: petclinic
 
     steps:
