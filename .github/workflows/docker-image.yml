@@ -1,10 +1,8 @@
 name: Build Docker Image
 
-on:
-  workflow_run:
-    workflows: [BuildPetclinicApp]
-    types:
-      - completed
+on: 
+  push: 
+    branches: [ "main" ]
 
 jobs:
   Initialize:
