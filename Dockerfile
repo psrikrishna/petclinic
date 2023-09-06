@@ -3,7 +3,7 @@ FROM openjdk:17-oracle
 
 RUN mkdir -p /home/petclinic
 
-COPY target/*.jar /home/petclinic/
+COPY /home/runner/work/petclinic/petclinic/target/spring-petclinic-3.1.0-SNAPSHOT.jar /home/petclinic/
 
 WORKDIR /home/petclinic/
 
