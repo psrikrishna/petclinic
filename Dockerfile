@@ -1,11 +1,13 @@
 FROM openjdk:17-oracle
 
-RUN mkdir -p /home/petclinic
+#RUN mkdir -p /home/petclinic
 
-COPY target/*.jar /home/petclinic/
+COPY target/*.jar . 
 
-WORKDIR /home/petclinic/
+#/home/petclinic/
 
-EXPOSE 8080
+#WORKDIR /home/petclinic/
+
+#EXPOSE 8080
 
 CMD ["java", "-jar", "spring-petclinic-3.1.0-SNAPSHOT.jar",  "--spring.profiles.active=postgres"]
