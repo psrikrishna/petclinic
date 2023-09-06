@@ -17,6 +17,9 @@ jobs:
   BuildDockerImage:
     runs-on: ubuntu-latest
 
+     env:
+      ECR_REPOSITORY: petclinic
+
     steps:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
