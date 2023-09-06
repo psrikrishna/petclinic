@@ -45,6 +45,7 @@ permissions:
 jobs:
   deploy:
     name: Deploy
+    needs: Build Docker Image
     runs-on: ubuntu-latest
     environment: production
 
