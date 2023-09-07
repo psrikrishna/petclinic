@@ -8,10 +8,10 @@ RUN mkdir -p /app
 WORKDIR /app
 
 # Copy the JAR file from the GitHub Actions workspace into the container
-COPY /home/runner/work/petclinic/petclinic/target/spring-petclinic-3.1.0-SNAPSHOT.jar /app/spring-petclinic.jar
+COPY target/*.jar /app/spring-petclinic.jar
 
 # Expose the port that the application will listen on (if applicable)
 EXPOSE 8080
 
 # Define the command to run the Java application
-CMD ["java", "-jar", "spring-petclinic.jar", "--spring.profiles.active=postgres"]
+CMD ["java", "-jar", "/app/spring-petclinic.jar", "--spring.profiles.active=postgres"]
