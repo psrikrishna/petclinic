@@ -18,10 +18,10 @@ jobs:
         with:
           version: latest
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .  # Use the current directory as the build context.
-          file: ./Dockerfile  # Adjust the path to your Dockerfile.
-          push: true
-          tags: petclinic:latest  
+      - name: Build the Docker image
+        run: |
+          ls target
+          cd target
+          pwd
+          
+          docker build . --file Dockerfile --tag petclinic:latest
