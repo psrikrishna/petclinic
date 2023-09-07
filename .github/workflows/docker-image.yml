@@ -9,14 +9,9 @@ on:
 jobs:
   BuildDockerImage:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Dependant is Running
-        run: |
-          echo "Completed job 2, but triggering failure"
-          exit 1
-
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
