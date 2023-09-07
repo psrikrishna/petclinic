@@ -20,9 +20,6 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          pwd
-          cd target
-          pwd
+          cd /home/runner/work/petclinic/petclinic/target/
           ls
-          
           docker build . --file Dockerfile --tag petclinic:latest
