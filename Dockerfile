@@ -1,10 +1,10 @@
 FROM openjdk:17-oracle
 
-RUN mkdir -p /home/petclinic
+# RUN mkdir -p /home/petclinic
 
-COPY target/*.jar /home/petclinic/
+# COPY target/*.jar /home/petclinic/
 
-WORKDIR /home/petclinic/
+WORKDIR /home/runner/work/petclinic/petclinic/target/
 
 EXPOSE 8080
 
