@@ -8,7 +8,7 @@ RUN mkdir -p /app
 WORKDIR /app
 
 # Copy the JAR file from the GitHub Actions workspace into the container
-COPY target/*.jar /app/spring-petclinic.jar
+COPY /home/runner/work/petclinic/petclinic/target/* /app/spring-petclinic.jar
 
 # Expose the port that the application will listen on (if applicable)
 EXPOSE 8080
