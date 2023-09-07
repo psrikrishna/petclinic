@@ -27,8 +27,10 @@
 name: Deploy to Amazon ECS
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_run:
+    workflows: ["BuildDockerImage"]
+    types:
+      - completed
 
 env:
   ECR_REPOSITORY: petclinic           # set this to your Amazon ECR repository name
@@ -45,7 +47,6 @@ permissions:
 jobs:
   deploy:
     name: Deploy
-    needs: Build Docker Image
     runs-on: ubuntu-latest
     environment: production
 
@@ -68,7 +69,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG: latest
       run: |
         # Build a docker container and
         # push it to ECR so that it can
