@@ -1,11 +1,17 @@
+# Use the official OpenJDK image as the base image
 FROM openjdk:17-oracle
 
-# RUN mkdir -p /home/petclinic
+# Create a directory inside the container to store the JAR file
+RUN mkdir -p /app
 
-# COPY target/*.jar /home/petclinic/
+# Set the working directory to the newly created directory
+WORKDIR /app
 
-WORKDIR /home/runner/work/petclinic/petclinic/target/
+# Copy the JAR file from the GitHub Actions workspace into the container
+COPY target/*.jar /app/spring-petclinic.jar
 
+# Expose the port that the application will listen on (if applicable)
 EXPOSE 8080
 
-CMD ["java", "-jar", "spring-petclinic-3.1.0-SNAPSHOT.jar",  "--spring.profiles.active=postgres"]
+# Define the command to run the Java application
+CMD ["java", "-jar", "spring-petclinic.jar", "--spring.profiles.active=postgres"]
