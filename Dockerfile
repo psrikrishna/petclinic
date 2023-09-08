@@ -1,9 +1,11 @@
-FROM openjdk:17-oracle
+FROM eclipse-temurin:20-jdk-alpine as build
+COPY . /usr/app
+WORKDIR /usr/app
+RUN chmod +x mvnw && ./mvnw clean package
 
-# WORKDIR /home/runner/work/petclinic/petclinic/staging/
-
-COPY /home/runner/work/petclinic/petclinic/staging/spring-petclinic-3.1.0-SNAPSHOT.jar .
-
+FROM eclipse-temurin:20-jre-alpine
+RUN apk update && apk upgrade && mkdir /app
+COPY --from=build /usr/app/target/*.jar /app/com.springboot.starterkit.jar
 EXPOSE 8080
 
 CMD ["java", "-jar", "spring-petclinic-3.1.0-SNAPSHOT.jar",  "--spring.profiles.active=postgres"]
