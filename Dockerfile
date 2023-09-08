@@ -1,8 +1,6 @@
 FROM openjdk:17-oracle
 
-WORKDIR /staging
-
-COPY spring-petclinic-3.1.0-SNAPSHOT.jar .
+WORKDIR staging
 
 EXPOSE 8080
 
