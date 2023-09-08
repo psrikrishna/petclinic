@@ -30,3 +30,17 @@ jobs:
 
       - name: Build with Maven Wrapper
         run: mvn clean package -DskipTests -Dspring.profiles.active=postgres
+
+  BuildDockerImage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+
+      - name: Build the Docker image
+        run: docker build . --tag petclinic:latest
