@@ -1,8 +1,8 @@
 FROM openjdk:17-oracle
 
-WORKDIR /home/runner/work/petclinic/petclinic/staging/
+# WORKDIR /home/runner/work/petclinic/petclinic/staging/
 
-COPY spring-petclinic-3.1.0-SNAPSHOT.jar .
+COPY /home/runner/work/petclinic/petclinic/staging/spring-petclinic-3.1.0-SNAPSHOT.jar .
 
 EXPOSE 8080
 
