@@ -1,4 +1,8 @@
-target/*
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 bin/*
 build/*
 .gradle/*
@@ -9,7 +13,6 @@ build/*
 .attach_pid*
 .idea
 *.iml
-/target
 .sts4-cache/
 .vscode
 _site/
