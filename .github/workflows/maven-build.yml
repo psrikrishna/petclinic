@@ -29,7 +29,7 @@ jobs:
           cache: maven
 
       - name: Build with Maven Wrapper
-        run: mvn clean package -DskipTests -Dspring.profiles.active=postgres
+        run: mvn clean install package -DskipTests -Dspring.profiles.active=postgres
 
   BuildDockerImage:
     runs-on: ubuntu-latest
