@@ -5,7 +5,7 @@ RUN chmod +x mvnw && ./mvnw clean package
 
 FROM eclipse-temurin:20-jre-alpine
 RUN apk update && apk upgrade && mkdir /app
-COPY --from=build /usr/app/target/*.jar /app/com.springboot.starterkit.jar
+COPY --from=build /usr/app/target/*.jar /app/com.springboot.petclinic.jar
 EXPOSE 8080
 
-CMD ["java", "-jar", "spring-petclinic-3.1.0-SNAPSHOT.jar",  "--spring.profiles.active=postgres"]
+CMD ["java", "-jar", "/app/com.springboot.petclinic.jar",  "--spring.profiles.active=postgres"]
